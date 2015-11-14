@@ -6,21 +6,23 @@ AuthErrors = React.createClass({
         errors: React.PropTypes.object
     },
     render() {
-        var str=[];
+        var str = [];
 
         if (!_.isEmpty(this.props.errors)) {
-            _.forEach(this.props.errors, function(_i){
+            _.forEach(this.props.errors, function (_i) {
                 str.push(_i);
             })
+
+            return  (
+                <ul className="list-group">
+                    <li className="list-group-item alert alert-danger">{str.join(", ")}</li>
+                </ul>
+            );
+        } else {
+            return (<span></span>);
         }
-        return (
-            <ul className="list-group">
-                <li className="list-group-item alert alert-danger">{str.join(", ")}</li>
-            </ul>
-        )
     }
 });
-
 
 
 FormInput = React.createClass({
@@ -57,7 +59,7 @@ FormInput = React.createClass({
                     );
                 });
                 inputType = (
-                    <select className="form-control"  name={ name.toLowerCase() }  onBlur={ onBlur } >
+                    <select className="form-control" name={ name.toLowerCase() } onBlur={ onBlur }>
                         { options }
                     </select>
                 );
