@@ -16,6 +16,17 @@ FlowRouter.route("/login", {
     }
 });
 
+
+FlowRouter.route("/profile", {
+    name: "UserProfile",
+    subscriptions(_params) {
+
+    },
+    action(_params) {
+        renderMainLayoutWith(<UserProfile />);
+    }
+});
+
 FlowRouter.route("/create-account", {
     name: "CreateAccount",
     subscriptions(_params) {

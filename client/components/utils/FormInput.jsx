@@ -6,6 +6,7 @@ FormInput = React.createClass({
         label: React.PropTypes.string,
         type: React.PropTypes.string,
         name: React.PropTypes.string,
+        disabled: React.PropTypes.string,
         value: React.PropTypes.string,
         data: React.PropTypes.array,
         onKeyUp: React.PropTypes.func,
@@ -15,7 +16,7 @@ FormInput = React.createClass({
         return true;
     },
     render() {
-        const {type, label, name, value, onKeyUp, onBlur } = this.props;
+        const {type, label, name, value, onKeyUp, onBlur, data, disabled } = this.props;
         let inputType;
 
         var className = "form-group";
@@ -34,7 +35,7 @@ FormInput = React.createClass({
                     );
                 });
                 inputType = (
-                    <select className="form-control" name={ name.toLowerCase() } onBlur={ onBlur }>
+                    <select className="form-control" name={ name.toLowerCase() } onBlur={ onBlur }  disabled={disabled}>
                         { options }
                     </select>
                 );
@@ -42,13 +43,13 @@ FormInput = React.createClass({
             case "textarea":
                 inputType = (
                     <textarea type={ type } className="form-control" name={ name.toLowerCase() } placeholder={ name }
-                              defaultValue={ value } onKeyUp={ onKeyUp } onBlur={ onBlur }></textarea>
+                              defaultValue={ value } onKeyUp={ onKeyUp } onBlur={ onBlur }  disabled={disabled}></textarea>
                 );
                 break;
             default:
                 inputType = (
                     <input type={ type } className="form-control" name={ name.toLowerCase() } placeholder={ label }
-                           defaultValue={ value } onKeyUp={ onKeyUp } onBlur={ onBlur }/>
+                           defaultValue={ value } onKeyUp={ onKeyUp } onBlur={ onBlur } disabled={disabled} />
                 );
                 break;
         }

@@ -45,7 +45,6 @@ MainHeader = React.createClass({
                             <span className="sr-only">Toggle navigation</span>
                             <span className="icon-bar"></span>
                             <span className="icon-bar"></span>
-                            <span className="icon-bar"></span>
                         </button>
                         <a className="navbar-brand" href="#">React Meteor</a>
                     </div>
@@ -53,6 +52,9 @@ MainHeader = React.createClass({
                     <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul className="nav navbar-nav navbar-right">
                             <li><a href="/">Home</a></li>
+                            <li><a href="/session">Session</a></li>
+                            <li><a href="/assessments">Assessments</a></li>
+                            <li><a href="/profile">Profile</a></li>
                             {loginButton}
                         </ul>
                     </div>
