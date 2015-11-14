@@ -16,6 +16,7 @@ UserCreateAccount = React.createClass({
         var password = $(event.target).find("[name=password]").val();
         var firstName = $(event.target).find("[name=firstname]").val();
         var lastName = $(event.target).find("[name=lastname]").val();
+        var userType = $(event.target).find("[name=usertype]").val();
 
         var errors = {};
 
@@ -46,6 +47,7 @@ UserCreateAccount = React.createClass({
         var profile = {
             firstName: firstName,
             lastName: lastName,
+            userType : userType,
             created: new Date()
         };
 
@@ -67,6 +69,18 @@ UserCreateAccount = React.createClass({
         });
     },
     render() {
+
+        let userTypesArray = [{
+            name: "Student",
+            value: "STUDENT"
+        },{
+            name: "Tutor",
+            value: "TUTOR"
+        },{
+            name: "Administrator",
+            value: "ADMIN"
+        }];
+
         return (
             <div className="container">
                 <div className="row">
@@ -80,6 +94,7 @@ UserCreateAccount = React.createClass({
                             <FormInput hasError={!!this.state.errors.lname} name="LastName" type="text"
                                        label="Last Name"/>
                             <FormInput hasError={!!this.state.errors.email} name="Email" type="text" label="Email"/>
+                            <FormInput name="UserType" type="select" label="User Type" data={userTypesArray}/>
                             <FormInput hasError={!!this.state.errors.password} name="Password" type="password"
                                        label="Password"/>
                             <input type="submit" className="btn btn-default"/>
