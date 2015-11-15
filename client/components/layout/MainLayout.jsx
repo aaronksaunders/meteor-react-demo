@@ -22,6 +22,7 @@ MainHeader = React.createClass({
     },
     handleLogout() {
         Meteor.logout();
+        FlowRouter.go("Home");
     },
     render() {
         let loginButton;

@@ -49,7 +49,7 @@ UserLogin = React.createClass({
         return (
             <div className="container">
                 <div className="row">
-                    <div className="col-sm-6 col-sm-offset-3">
+                    <div className="col-sm-8 col-sm-offset-2">
                         <h1>Login</h1>
 
                         <form onSubmit={this.onSubmit}>
@@ -58,7 +58,7 @@ UserLogin = React.createClass({
                             <FormInput hasError={!!this.state.errors.password} name="Password" type="password"
                                        label="Password"/>
                             <div class="col-md-6 text-right">
-                                <input type="submit" className="btn btn-default"/>
+                                <button type="submit" className="btn btn-default">Login</button>
                                 <a className="btn btn-default" style={{margin:5}} href="/create-account">Create
                                     Account</a>
                             </div>

@@ -11,6 +11,12 @@ UserProfile = React.createClass({
             currentUser: Meteor.user()
         };
     },
+
+    logoutUser() {
+        Meteor.logoutUser();
+        FlowRouter.go("Home");
+    },
+
     onSubmit(event) {
         event.preventDefault();
 
@@ -91,7 +97,7 @@ UserProfile = React.createClass({
             return (
                 <div className="container">
                     <div className="row">
-                        <div className="col-sm-6 col-sm-offset-3">
+                        <div className="col-sm-8 col-sm-offset-2">
                             <h1>Update Account Information</h1>
 
                             <form onSubmit={this.onSubmit}>
@@ -107,6 +113,7 @@ UserProfile = React.createClass({
                                 <input type="submit" className="btn btn-default"/>
                             </form>
                         </div>
+
                     </div>
                 </div>
             )

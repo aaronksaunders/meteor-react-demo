@@ -36,9 +36,13 @@ Home = React.createClass({
                         <p className="text-center">The fun starts here</p>
                     </div>
                 </div>
-                <ul>
-                    { Meteor.userId && this.renderSessions() }
-                </ul>
+                <div className="container">
+                    <table className="table">
+                        <tbody>
+                        { Meteor.userId && this.renderSessions() }
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
         )

@@ -1,3 +1,4 @@
+
 FlowRouter.route("/", {
     name: "Home",
     action(_params) {
@@ -23,6 +24,10 @@ FlowRouter.route("/profile", {
 
     },
     action(_params) {
+
+        //if not logged in the go to login page
+        checkLoginStatus();
+
         renderMainLayoutWith(<UserProfile />);
     }
 });
@@ -38,6 +43,11 @@ FlowRouter.route("/create-account", {
 });
 
 
+function checkLoginStatus() {
+    if (!Meteor.userId()) {
+        FlowRouter.go('Login')
+    }
+}
 
 function renderMainLayoutWith(component) {
     ReactLayout.render(MainLayout, {

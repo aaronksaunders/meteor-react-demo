@@ -13,7 +13,7 @@ Session = React.createClass({
         //  Meteor.call("removeTask", this.props.session._id);
     },
 
-    togglePrivate() {
+    commentOnThisTask() {
         //  Meteor.call("setPrivate", this.props.session._id, ! this.props.session.private);
     },
 
@@ -25,23 +25,29 @@ Session = React.createClass({
         //     (this.props.session.private ? "private" : "");
         const sessionClassName = "";
 
+        let verticalAlignStyle = {"verticalAlign": "middle",'float': 'none'};
+
         return (
-            <li className={sessionClassName}>
-                <button className="delete" onClick={this.deleteThisTask}>
-                    &times;
-                </button>
-
-                <input
-                    type="checkbox"
-                    readOnly={true}
-                    checked={this.props.session.checked}
-                    onClick={this.toggleChecked}
-                />
-
-                <span className="text">
-                    <strong>{this.props.session.name}</strong>: {this.props.session.description}
-                </span>
-            </li>
+            <tr>
+                <td>
+                    <div className="btn-group">
+                        <button className="btn btn-default btn-lg"
+                                onClick={this.deleteThisTask}>
+                            <i className="fa fa-trash-o fa-lg"></i>
+                        </button>
+                        <button className="btn btn-default btn-lg"
+                                onClick={this.commentOnThisTask}>
+                            <i className="fa fa-pencil-square-o fa-lg"></i>
+                        </button>
+                    </div>
+                </td>
+                <td style={verticalAlignStyle}>
+                    {this.props.session.name}
+                </td>
+                <td style={verticalAlignStyle}>
+                    {this.props.session.description}
+                </td>
+            </tr >
         );
     }
 });
