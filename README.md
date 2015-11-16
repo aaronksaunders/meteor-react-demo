@@ -7,3 +7,5 @@
 ###Differences
 * There was some code missing that showed how to actually create an account so I have included that in this demo.
 * The form helper code did not properly use the label when rendering the form
+* The form helper code did not support a date picker
+* The form helper code did not support select-option input type
