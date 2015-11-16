@@ -43,6 +43,17 @@ FlowRouter.route("/create-account", {
 });
 
 
+FlowRouter.route("/create-session", {
+    name: "CreateSession",
+    subscriptions(_params) {
+
+    },
+    action(_params) {
+        renderMainLayoutWith(<SessionNew />);
+    }
+});
+
+
 function checkLoginStatus() {
     if (!Meteor.userId()) {
         FlowRouter.go('Login')
