@@ -16,7 +16,7 @@ FormInput = React.createClass({
         return true;
     },
     render() {
-        const {type, label, name, value, onKeyUp, onBlur, data, disabled } = this.props;
+        const {type, label, name, value, onKeyUp, onBlur, data, disabled, onChange } = this.props;
         let inputType;
 
         var className = "form-group";
@@ -35,7 +35,7 @@ FormInput = React.createClass({
                     );
                 });
                 inputType = (
-                    <select className="form-control" name={ name.toLowerCase() } onBlur={ onBlur }  disabled={disabled}>
+                    <select className="form-control" name={ name.toLowerCase() } onBlur={ onBlur } disabled={disabled}>
                         { options }
                     </select>
                 );
@@ -43,13 +43,26 @@ FormInput = React.createClass({
             case "textarea":
                 inputType = (
                     <textarea type={ type } className="form-control" name={ name.toLowerCase() } placeholder={ name }
-                              defaultValue={ value } onKeyUp={ onKeyUp } onBlur={ onBlur }  disabled={disabled}></textarea>
+                              defaultValue={ value } onKeyUp={ onKeyUp } onBlur={ onBlur }
+                              disabled={disabled}></textarea>
+                );
+                break;
+            case "datepicker":
+                inputType = (
+                    <span>
+                        <i class="fa fa-calendar"></i>
+                        <ReactDatetimePicker
+                            configuration='configurationName'
+                            defaultValue={ value }
+                            onChange={onChange}
+                            inputProps={{className:'form-control', name:name.toLowerCase() }} />
+                    </span>
                 );
                 break;
             default:
                 inputType = (
                     <input type={ type } className="form-control" name={ name.toLowerCase() } placeholder={ label }
-                           defaultValue={ value } onKeyUp={ onKeyUp } onBlur={ onBlur } disabled={disabled} />
+                           defaultValue={ value } onKeyUp={ onKeyUp } onBlur={ onBlur } disabled={disabled}/>
                 );
                 break;
         }

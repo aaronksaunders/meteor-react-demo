@@ -22,6 +22,7 @@ SessionNew = React.createClass({
         var student = $(event.target).find("[name=student]").val();
         var sessionTitle = $(event.target).find("[name=session_title]").val();
         var sessionDescription = $(event.target).find("[name=session_desc]").val();
+        var sessionDate = $(event.target).find("[name=session_date]").val();
 
         var errors = {};
 
@@ -32,6 +33,8 @@ SessionNew = React.createClass({
         !sessionTitle && (errors.session_title = "Password required");
 
         !sessionDescription && (errors.session_desc = "Password required");
+
+        !sessionDate && (errors.session_date = "Missing Date");
 
         if (!password) {
             errors.session_desc = "Description required"
@@ -89,11 +92,10 @@ SessionNew = React.createClass({
                             <FormInput hasError={!!this.state.errors.session_desc} name="session_desc" type="textarea"
                                        label="Session Description"/>
 
-                            <ReactDatetimePicker
-                                configuration='configurationName'
-                                inputProps={{className:'form-control'}}
-                                value={this.state.date}
-                                onChange={this.updateDate}/>
+
+                            <FormInput hasError={!!this.state.errors.session_date} name="session_date" type="datepicker"
+                                       onChange={this.updateDate}
+                                       label="Session Date"/>
 
                             <div class="col-md-6 text-right">
                                 <button type="submit" className="btn btn-default">Create New Session</button>
