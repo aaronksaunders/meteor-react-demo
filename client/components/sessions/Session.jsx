@@ -26,8 +26,9 @@ Session = React.createClass({
         const sessionClassName = "";
 
         let verticalAlignStyle = {"verticalAlign": "middle",'float': 'none'};
-
+        let displayName = this.props.session.usersObj.profile.firstName + " " + this.props.session.usersObj.profile.lastName
         return (
+
             <tr>
                 <td>
                     <div className="btn-group">
@@ -42,7 +43,10 @@ Session = React.createClass({
                     </div>
                 </td>
                 <td style={verticalAlignStyle}>
-                    {this.props.session.name}
+                    { displayName }
+                </td>
+                <td style={verticalAlignStyle}>
+                    {this.props.session.title}
                 </td>
                 <td style={verticalAlignStyle}>
                     {this.props.session.description}

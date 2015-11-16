@@ -1,21 +1,40 @@
 SessionNew = React.createClass({
     mixins: [ReactMeteorData],
     PropTypes: {},
+
+    /**
+     *
+     * @returns {{errors: {}}}
+     */
     getInitialState() {
         return {
             errors: {}
         }
     },
 
+    /**
+     *
+     */
     componentDidMount() {
     },
 
+    /**
+     * get the data from meteor that is needed for this
+     * page to render
+     *
+     * @returns {{students: any, tutors: any}}
+     */
     getMeteorData() {
         return {
             students: Meteor.users.find({"profile.userType": "STUDENT"}).fetch(),
             tutors: Meteor.users.find({"profile.userType": "TUTOR"}).fetch()
         }
     },
+
+    /**
+     * called to save the object to the Session Collection
+     * @param event
+     */
     onSubmit(event) {
         event.preventDefault();
 
@@ -26,19 +45,12 @@ SessionNew = React.createClass({
 
         var errors = {};
 
-        !student && (errors.student = "Email required");
 
-        !sessionTitle && (errors.session_title = "Password required");
+        !sessionTitle && (errors.session_title = "Title required");
 
-        !sessionTitle && (errors.session_title = "Password required");
-
-        !sessionDescription && (errors.session_desc = "Password required");
+        !sessionDescription && (errors.session_desc = "Description required");
 
         !sessionDate && (errors.session_date = "Missing Date");
-
-        if (!password) {
-            errors.session_desc = "Description required"
-        }
 
         this.setState({
             errors: errors
@@ -48,10 +60,19 @@ SessionNew = React.createClass({
             return;
         }
 
+        Sessions.insert({
+            owner : Meteor.userId(),
+            student_id : student,
+            title : sessionTitle,
+            description :sessionDescription,
+            scheduled_date : new Date(sessionDate),
+            created_at : new Date()
+        })
+
     },
 
     /**
-     *
+     * converts the user collection into something that can be displayed in UI
      * @param _users
      */
     convertToSelectArray(_users) {
@@ -62,6 +83,10 @@ SessionNew = React.createClass({
         return _array;
     },
 
+    /**
+     * called when the date field is updated in the form
+     * @param _event
+     */
     updateDate(_event) {
         console.log(_event);
     },
@@ -79,7 +104,7 @@ SessionNew = React.createClass({
                     <div className="col-sm-8 col-sm-offset-2">
                         <h1>Create New Session</h1>
 
-                        <form onSubmit={this.onSubmit}>
+                        <form onSubmit={this.onSubmit} ref="inputForm">
                             <AuthErrors errors={this.state.errors}/>
 
                             <FormInput hasError={!!this.state.errors.student} name="student"
@@ -93,7 +118,7 @@ SessionNew = React.createClass({
                                        label="Session Description"/>
 
 
-                            <FormInput hasError={!!this.state.errors.session_date} name="session_date" type="datepicker"
+                            <FormInput hasError={!!this.state.errors.session_date} name="session_date"  ref="session_date" type="datepicker"
                                        onChange={this.updateDate}
                                        label="Session Date"/>
 
