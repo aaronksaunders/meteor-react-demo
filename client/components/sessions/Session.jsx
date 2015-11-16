@@ -25,8 +25,9 @@ Session = React.createClass({
         //     (this.props.session.private ? "private" : "");
         const sessionClassName = "";
 
-        let verticalAlignStyle = {"verticalAlign": "middle",'float': 'none'};
-        let displayName = this.props.session.usersObj.profile.firstName + " " + this.props.session.usersObj.profile.lastName
+        let verticalAlignStyle = {"verticalAlign": "middle", 'float': 'none'};
+        let displayName = this.props.session.usersObj &&
+            (this.props.session.usersObj.profile.firstName + " " + this.props.session.usersObj.profile.lastName);
         return (
 
             <tr>
