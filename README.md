@@ -9,3 +9,4 @@
 * The form helper code did not properly use the label when rendering the form
 * The form helper code did not support a date picker - used package [3stack:react-datetimepicker](https://atmospherejs.com/3stack/react-datetimepicker)
 * The form helper code did not support select-option input type
+* Handle state changes when user logs in and logs out thru `Meteor.user()`
