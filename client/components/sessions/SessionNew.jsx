@@ -61,12 +61,12 @@ SessionNew = React.createClass({
         }
 
         Sessions.insert({
-            owner : Meteor.userId(),
-            student_id : student,
-            title : sessionTitle,
-            description :sessionDescription,
-            scheduled_date : new Date(sessionDate),
-            created_at : new Date()
+            owner: Meteor.userId(),
+            student_id: student,
+            title: sessionTitle,
+            description: sessionDescription,
+            scheduled_date: new Date(sessionDate),
+            created_at: new Date()
         })
 
     },
@@ -118,13 +118,14 @@ SessionNew = React.createClass({
                                        label="Session Description"/>
 
 
-                            <FormInput hasError={!!this.state.errors.session_date} name="session_date"  ref="session_date" type="datepicker"
+                            <FormInput hasError={!!this.state.errors.session_date} name="session_date"
+                                       ref="session_date" type="datepicker"
                                        onChange={this.updateDate}
                                        label="Session Date"/>
 
                             <div class="col-md-6 text-right">
-                                <button type="submit" className="btn btn-default">Create New Session</button>
-                                <a className="btn btn-default" style={{margin:5}} href="/">Cancel</a>
+                                <button type="submit" className="btn btn-default  btn-lg ">Create New Session</button>
+                                <a className="btn btn-danger  btn-lg " style={{margin:5}} href="/">Cancel</a>
                             </div>
                         </form>
                     </div>

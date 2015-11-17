@@ -1,4 +1,3 @@
-
 FlowRouter.route("/", {
     name: "Home",
     action(_params) {

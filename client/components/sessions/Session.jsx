@@ -1,4 +1,7 @@
-// Task component - represents a single todo item
+/**
+ * Session component - represents a single Session item
+ */
+
 Session = React.createClass({
     propTypes: {
         session: React.PropTypes.object.isRequired,

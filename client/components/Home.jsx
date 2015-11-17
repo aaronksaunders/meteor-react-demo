@@ -3,28 +3,24 @@ Home = React.createClass({
     mixins: [ReactMeteorData],
 
     getInitialState() {
-        return {}
+        return {
+            loggedIn : false
+        }
     },
 
     getMeteorData() {
-
         return {
-            sessions: Sessions.find({}, {sort: {createdAt: -1}}).fetch(),
-            currentUser: Meteor.user()
-        };
+            currentUser : Meteor.user()
+        }
     },
 
-    renderSessions() {
-        // Get tasks from this.data.tasks
-        return this.data.sessions.map((_session) => {
-            const currentUserId = this.data.currentUser && this.data.currentUser._id;
-
-            return <Session
-                key={_session._id}
-                session={_session}/>;
-        });
+    componentDidMount() {
+        console.log("mounted");
     },
 
+    renderList () {
+            return ( <SessionList user={this.data.currentUser}  ref={'sessionList'}/> );
+    },
 
     render() {
 
@@ -36,15 +32,13 @@ Home = React.createClass({
                         <p className="text-center">The fun starts here</p>
                     </div>
                 </div>
+
+                { this.renderList() }
+
                 <div className="container">
-                    <table className="table">
-                        <tbody>
-                        { Meteor.userId && this.renderSessions() }
-                        </tbody>
-                    </table>
+                    <a className="btn btn-default btn-lg pull-right" href="/create-session">Add New Session</a>
                 </div>
             </div>
-
         )
     }
 });
