@@ -123,7 +123,7 @@ SessionNew = React.createClass({
                                        onChange={this.updateDate}
                                        label="Session Date"/>
 
-                            <div class="col-md-6 text-right">
+                            <div className="text-right">
                                 <button type="submit" className="btn btn-default  btn-lg ">Create New Session</button>
                                 <a className="btn btn-danger  btn-lg " style={{margin:5}} href="/">Cancel</a>
                             </div>

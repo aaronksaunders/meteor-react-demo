@@ -49,14 +49,16 @@ FormInput = React.createClass({
                 break;
             case "datepicker":
                 inputType = (
-                    <span>
-                        <i class="fa fa-calendar"></i>
+                    <div className="input-group">
+                        <span className="input-group-addon">
+                            <span className="fa fa-calendar fa-lg"></span>
+                        </span>
                         <ReactDatetimePicker
                             configuration='configurationName'
                             defaultValue={ value }
                             onChange={onChange}
-                            inputProps={{className:'form-control', name:name.toLowerCase() }} />
-                    </span>
+                            inputProps={{className:'form-control', name:name.toLowerCase() }}/>
+                    </div>
                 );
                 break;
             default:

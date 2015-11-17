@@ -4,13 +4,13 @@ Home = React.createClass({
 
     getInitialState() {
         return {
-            loggedIn : false
+            loggedIn: false
         }
     },
 
     getMeteorData() {
         return {
-            currentUser : Meteor.user()
+            currentUser: Meteor.user()
         }
     },
 
@@ -19,7 +19,7 @@ Home = React.createClass({
     },
 
     renderList () {
-            return ( <SessionList user={this.data.currentUser}  ref={'sessionList'}/> );
+        return ( <SessionList user={this.data.currentUser} ref={'sessionList'}/> );
     },
 
     render() {

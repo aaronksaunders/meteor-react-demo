@@ -49,7 +49,7 @@ MainHeader = React.createClass({
                             <span className="icon-bar"></span>
                             <span className="icon-bar"></span>
                         </button>
-                        <a className="navbar-brand" href="#">React Meteor</a>
+                        <a className="navbar-brand" href="#">React Meteor Demo - Tutor Management</a>
                     </div>
 
                     <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
