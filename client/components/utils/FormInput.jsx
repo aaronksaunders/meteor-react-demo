@@ -61,6 +61,19 @@ FormInput = React.createClass({
                     </div>
                 );
                 break;
+            case "avatar" :
+                inputType = (
+                    <span>
+                        <input type="file" name="avatarFile" className="hide"
+                               onChange={this.props.onChange} />
+                        <input type="button" name={ name.toLowerCase() }
+                               className="btn btn-primary"
+                               value={ label } onBlur={ onBlur }
+                               onClick={this.props.onClick}
+                               disabled={disabled}/>
+                    </span>
+                );
+                break;
             default:
                 inputType = (
                     <input type={ type } className="form-control" name={ name.toLowerCase() } placeholder={ label }
@@ -72,8 +85,8 @@ FormInput = React.createClass({
 
         return (
             <div className={ className }>
-                { label === "none" ? "" : <label htmlFor={ name.toLowerCase() }
-                                                 className="control-label">{ label }</label> }
+                { (label === "none" || type === "avatar" ) ? "" : <label htmlFor={ name.toLowerCase() }
+                                                                          className="control-label">{ label }</label> }
                 { inputType }
             </div>
         )

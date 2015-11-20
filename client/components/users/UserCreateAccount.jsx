@@ -89,6 +89,8 @@ UserCreateAccount = React.createClass({
 
                         <form onSubmit={this.onSubmit}>
                             <AuthErrors errors={this.state.errors}/>
+                            <FormInput hasError={!!this.state.errors.avatar} name="avatar" type="avatar"
+                                       value={user.profile.avatar}/>
                             <FormInput hasError={!!this.state.errors.fname} name="FirstName" type="text"
                                        label="First Name"/>
                             <FormInput hasError={!!this.state.errors.lname} name="LastName" type="text"
