@@ -76,6 +76,14 @@ UserCreateAccount = React.createClass({
         });
 
         if (!_.isEmpty(errors)) {
+
+            sAlert.warning('Missing Required Fields', {
+                effect: 'scale',
+                onRouteClose: true,
+                timeout: 5000,
+                position: 'bottom'
+            });
+
             return;
         }
 
@@ -98,9 +106,27 @@ UserCreateAccount = React.createClass({
                     errors: {'none': _error.reason}
                 });
 
+                sAlert.error('Error Creating User', {
+                    effect: 'scale',
+                    onRouteClose: true,
+                    timeout: 6000,
+                    position: 'bottom'
+                });
+
+
                 return;
             } else {
-                FlowRouter.go('Home');
+
+                sAlert.info('User Created Successfully', {
+                    effect: 'scale',
+                    onRouteClose: true,
+                    position: 'bottom'
+                });
+
+                setTimeout(function () {
+                    FlowRouter.go('Home');
+                }, 5000);
+
             }
         });
     },

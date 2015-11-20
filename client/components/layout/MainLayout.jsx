@@ -1,7 +1,22 @@
 MainFooter = React.createClass({
+
+    componentDidMount() {
+        // Use Meteor Blaze to render login buttons
+        this.view = Blaze.render(Template.alerts,
+            React.findDOMNode(this.refs.alerts));
+    },
+
+    componentWillUnmount() {
+        // Clean up Blaze view
+        Blaze.remove(this.view);
+    },
     render() {
+
         return (
             <div className="footer container">
+
+                <span ref="alerts"/>;
+
                 <div className="footer-content">
 
                 </div>
