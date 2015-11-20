@@ -43,4 +43,7 @@ meteortoys:allthings
 natestrauser:font-awesome
 tsega:bootstrap3-datetimepicker
 3stack:react-datetimepicker
+juliancwirko:s-alert
+juliancwirko:s-alert-slide
+juliancwirko:s-alert-scale
 ```
