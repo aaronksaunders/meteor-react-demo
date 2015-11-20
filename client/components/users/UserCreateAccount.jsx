@@ -3,12 +3,47 @@ UserCreateAccount = React.createClass({
     PropTypes: {},
     getInitialState() {
         return {
-            errors: {}
+            errors: {},
+            avatarData: null
         }
     },
     getMeteorData() {
         return {}
     },
+
+
+    onAvatarBtnClick(event) {
+        event.preventDefault();
+        $(document).find("[name=avatarFile]").click();
+    },
+
+    onAvatarFileChange(event) {
+        var that = this;
+
+        event.preventDefault();
+        var fileData = $(document).find("[name=avatarFile]");
+        if (fileData && fileData[0].files[0]) {
+            console.log(fileData[0].files[0]);
+            var file = fileData[0].files[0];
+
+            var reader = new FileReader();
+
+            reader.onload = function (_event) {
+                console.log("File Read: ", _event.target.result);
+
+                that.setState({
+                    avatarData: _event.target.result
+                });
+
+            };
+            reader.onerror = function (_event) {
+                console.log("On File Read Error: ", _event);
+            };
+            reader.readAsDataURL(file);
+        }
+    },
+
+
     onSubmit(event) {
         event.preventDefault();
 
@@ -47,8 +82,9 @@ UserCreateAccount = React.createClass({
         var profile = {
             firstName: firstName,
             lastName: lastName,
-            userType : userType,
-            created: new Date()
+            userType: userType,
+            created: new Date(),
+            avatar: this.state.avatarData
         };
 
         Accounts.createUser({
@@ -73,10 +109,10 @@ UserCreateAccount = React.createClass({
         let userTypesArray = [{
             name: "Student",
             value: "STUDENT"
-        },{
+        }, {
             name: "Tutor",
             value: "TUTOR"
-        },{
+        }, {
             name: "Administrator",
             value: "ADMIN"
         }];
@@ -89,8 +125,15 @@ UserCreateAccount = React.createClass({
 
                         <form onSubmit={this.onSubmit}>
                             <AuthErrors errors={this.state.errors}/>
+                            <div className="col-mid-9">
+                                <img id="avatarImg" src={this.state.avatarData} width="150"
+                                     className="img-responsive img-rounded center-block" alt=""/>
+                            </div>
+
                             <FormInput hasError={!!this.state.errors.avatar} name="avatar" type="avatar"
-                                       value={user.profile.avatar}/>
+                                       onClick={this.onAvatarBtnClick}
+                                       onChange={this.onAvatarFileChange}
+                                       label="Add Profile Image"/>
                             <FormInput hasError={!!this.state.errors.fname} name="FirstName" type="text"
                                        label="First Name"/>
                             <FormInput hasError={!!this.state.errors.lname} name="LastName" type="text"
