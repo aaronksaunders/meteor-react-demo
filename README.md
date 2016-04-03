@@ -1,5 +1,7 @@
 #Demo Using React & Meteor
 
+#### Updated Meteor 1.3 Example here => https://github.com/aaronksaunders/meteor-react-demo.1.3
+
 ###Overview
 * This is based on the code from the starter video and template provided by [https://github.com/ryanswapp/react-meteor-template](https://github.com/ryanswapp/react-meteor-template). 
 * Link to youtube video [https://www.youtube.com/watch?v=kVbVBp35keQ](https://www.youtube.com/watch?v=kVbVBp35keQ)
